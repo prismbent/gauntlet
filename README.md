@@ -1,4 +1,4 @@
 gauntlet
 ========
 
-Decoupled modules that communicate by events  
+Decoupled modules that communicate by way of events  
