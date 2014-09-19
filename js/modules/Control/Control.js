@@ -32,7 +32,7 @@ function( _, $, Backbone){
           function(data){
             that.parse(data)
           }
-        );
+        ).fail(function(){console.log("can't seem to locate that feed")});
   }
 
   Control.prototype.parse = function(data) {

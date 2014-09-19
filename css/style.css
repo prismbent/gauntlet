@@ -86,6 +86,7 @@ body {
 .data h3{text-transform: uppercase;}
 .tags{margin-bottom:20px;}
 .tags span{border-radius: 5px; padding:5px; background:lightblue;}
+.tags span:hover{background:aliceblue;cursor: pointer;color:#555;}
 .data table, th, td{border:1px solid #aaa;}
 .data th, .data td{padding:10px;} 
 

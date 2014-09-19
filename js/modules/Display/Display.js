@@ -34,7 +34,7 @@ function( _, $, Backbone){
   Display.prototype.triggerDoneRendering = function(){
     this.trigger("rendering:done");
   }
-
+  
   _.extend(Display.prototype, Backbone.Events);
 
   return Display;
