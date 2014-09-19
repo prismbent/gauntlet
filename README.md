@@ -1,4 +1,4 @@
 gauntlet
 ========
 
-Pubsub two modules that renders and sends success message to the other
+Decoupled modules that commuicate by events  
