@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Gauntlet | CounterTack</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="img/favicon.ico" />
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="css/bootstrap-theme.css" rel="stylesheet"> -->
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <div id="app" class="container">
+      <div class="header">
+        <h3 class="text-primary">Gauntlet</h3>
+      </div>
+
+      <div class="jumbotron">
+        <h1 id="display"></h1>
+      </div>
+
+      <div class="row marketing">
+        <div id="control" class="col-lg-12">
+        </div>
+      </div>
+
+      <div class="footer">
+        <p>&copy; 2014 CounterTack</p>
+      </div>
+
+    </div> <!-- /container -->
+    
+    <script src="lib/require-2.1.9.js" data-main="js/setup.js"></script>
+    <script type="text/template" class="template">
+      <div class="data">
+        <% _.each( datatree, function(dt){ %>
+            <p>
+              <h3><%- dt.command %></h3>    
+                <div class="tags">
+                  <% _.each(dt.tags, function(tag){ %>
+                    <span><%- tag %></span>
+                  <% }); %>
+                </div>
+              
+              <table>
+                <thead>
+                <th>Label</th>
+                <th>Value</th>
+                </thead>
+                <% _.each(dt.data, function(datum){ %>
+                  <tr>
+                    <td>label:<%- datum.label %></td>
+                    <td>value:<%- datum.value %></td>
+                  </tr>
+                <% }); %>
+              </table>
+            </p>    
+        <% }); %>
+      </div>
+    </script>
+  </body>
+</html>
