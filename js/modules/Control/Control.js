@@ -25,14 +25,24 @@ function( _, $, Backbone){
 
   Control.prototype.getFeed = function(){
     that = this;
+    
+    successFn = 
+      function(data){
+        that.parse(data)
+      }
+
+    failFn = 
+      function(){
+        console.log("can't seem to locate that feed")
+      } 
+
     $.ajax({
         type: "GET",
         url: "../../gauntlet/data/test-data.json",
         dataType: "json"}).done(
-          function(data){
-            that.parse(data)
-          }
-        ).fail(function(){console.log("can't seem to locate that feed")});
+          successFn
+        ).fail(
+          failFn);
   }
 
   Control.prototype.parse = function(data) {

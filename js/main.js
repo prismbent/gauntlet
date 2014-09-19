@@ -13,15 +13,15 @@ function( _, $, Backbone, Control, Display){
     initialize: function() {
       this.control = new Control({
         $el: this.$el.find("#control"),
-        app: this
+        // app: this
       });
       this.display = new Display({
         $el: this.$el.find("#display"),
-        app: this
+        // app: this
       });
       this.render();
       this.control.on("parsing:done", this.display.render, this);
-      this.display.on("rendering:done", this.control.showSuccess);
+      this.display.on("rendering:done", this.control.showSuccess, this);
     },
     render: function() {
       this.control.render();
