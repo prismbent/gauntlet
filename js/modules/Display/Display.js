@@ -16,6 +16,7 @@ function( _, $, Backbone){
 
   Display.prototype.initialize = function(){
     console.log(this.name + ": initialize");
+    this.listenTo(this.options.eventBus, "parsing:done", this.render);
   }
 
   Display.prototype.render = function(data){
@@ -23,7 +24,7 @@ function( _, $, Backbone){
       _.templateSettings.variable = "datatree";
       var template = _.template($("script.template").html());
       $("h1#display").after(template(data));
-      this.display.triggerDoneRendering();
+      this.options.eventBus.trigger("rendering:done");
     }
     else{
       this.options.$el.html(this.name + ' rendered.');
@@ -31,10 +32,6 @@ function( _, $, Backbone){
       
   }
 
-  Display.prototype.triggerDoneRendering = function(){
-    this.trigger("rendering:done");
-  }
-  
   _.extend(Display.prototype, Backbone.Events);
 
   return Display;

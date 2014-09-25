@@ -11,21 +11,20 @@ function( _, $, Backbone, Control, Display){
   var App = Backbone.View.extend({
     el: $('#app'),
     initialize: function() {
+      var eventBus = _.extend({}, Backbone.Events);
+
       this.control = new Control({
         $el: this.$el.find("#control"),
-        // app: this
+        eventBus: eventBus
       });
       this.display = new Display({
         $el: this.$el.find("#display"),
-        // app: this
+        eventBus: eventBus
       });
       this.render();
-      this.control.on("parsing:done", this.display.render, this);
-      this.display.on("rendering:done", this.control.showSuccess, this);
     },
     render: function() {
       this.control.render();
-      this.display.render();
     }
   });
 

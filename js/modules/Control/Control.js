@@ -15,8 +15,8 @@ function( _, $, Backbone){
   }
 
   Control.prototype.initialize = function(){
-    console.log(this.name + ": initialize");
     this.getFeed()
+    this.listenTo(this.options.eventBus, "rendering:done", this.showSuccess);
   }
 
   Control.prototype.render = function(){
@@ -47,7 +47,7 @@ function( _, $, Backbone){
 
   Control.prototype.parse = function(data) {
     var parsed = typeof data == "string"? JSON.parse(data): data;
-    this.trigger("parsing:done", parsed); 
+    this.options.eventBus.trigger("parsing:done", parsed);
   }
 
   Control.prototype.showSuccess = function() {
